@@ -44,6 +44,7 @@
             btnSuaSP = new Button();
             btnXoaSP = new Button();
             btnTiemkiemSP = new Button();
+            btnInSP = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(303, 68);
+            label4.Location = new Point(319, 68);
             label4.Name = "label4";
             label4.Size = new Size(86, 15);
             label4.TabIndex = 3;
@@ -84,7 +85,7 @@
             // 
             // txtTenSP
             // 
-            txtTenSP.Location = new Point(395, 60);
+            txtTenSP.Location = new Point(411, 60);
             txtTenSP.Name = "txtTenSP";
             txtTenSP.Size = new Size(186, 23);
             txtTenSP.TabIndex = 5;
@@ -98,15 +99,15 @@
             // 
             // txtSoluong
             // 
-            txtSoluong.Location = new Point(661, 75);
+            txtSoluong.Location = new Point(698, 80);
             txtSoluong.Name = "txtSoluong";
-            txtSoluong.Size = new Size(127, 23);
+            txtSoluong.Size = new Size(182, 23);
             txtSoluong.TabIndex = 7;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(601, 83);
+            label3.Location = new Point(632, 83);
             label3.Name = "label3";
             label3.Size = new Size(60, 15);
             label3.TabIndex = 2;
@@ -115,7 +116,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(303, 111);
+            label5.Location = new Point(319, 111);
             label5.Name = "label5";
             label5.Size = new Size(51, 15);
             label5.TabIndex = 8;
@@ -123,7 +124,7 @@
             // 
             // txtDongia
             // 
-            txtDongia.Location = new Point(395, 103);
+            txtDongia.Location = new Point(411, 103);
             txtDongia.Name = "txtDongia";
             txtDongia.Size = new Size(186, 23);
             txtDongia.TabIndex = 9;
@@ -133,7 +134,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.Highlight;
-            label6.Location = new Point(259, 9);
+            label6.Location = new Point(411, 9);
             label6.Name = "label6";
             label6.Size = new Size(266, 37);
             label6.TabIndex = 10;
@@ -142,53 +143,63 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 147);
+            dataGridView1.Location = new Point(6, 145);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(776, 253);
+            dataGridView1.Size = new Size(1066, 334);
             dataGridView1.TabIndex = 11;
             // 
             // btnThemSP
             // 
-            btnThemSP.Location = new Point(25, 415);
+            btnThemSP.Location = new Point(12, 502);
             btnThemSP.Name = "btnThemSP";
-            btnThemSP.Size = new Size(100, 23);
+            btnThemSP.Size = new Size(108, 31);
             btnThemSP.TabIndex = 12;
             btnThemSP.Text = "Thêm";
             btnThemSP.UseVisualStyleBackColor = true;
             // 
             // btnSuaSP
             // 
-            btnSuaSP.Location = new Point(259, 415);
+            btnSuaSP.Location = new Point(237, 502);
             btnSuaSP.Name = "btnSuaSP";
-            btnSuaSP.Size = new Size(95, 23);
+            btnSuaSP.Size = new Size(108, 31);
             btnSuaSP.TabIndex = 13;
             btnSuaSP.Text = "Sửa";
             btnSuaSP.UseVisualStyleBackColor = true;
             // 
             // btnXoaSP
             // 
-            btnXoaSP.Location = new Point(504, 415);
+            btnXoaSP.Location = new Point(477, 502);
             btnXoaSP.Name = "btnXoaSP";
-            btnXoaSP.Size = new Size(96, 23);
+            btnXoaSP.Size = new Size(108, 31);
             btnXoaSP.TabIndex = 14;
             btnXoaSP.Text = "Xóa";
             btnXoaSP.UseVisualStyleBackColor = true;
             // 
             // btnTiemkiemSP
             // 
-            btnTiemkiemSP.Location = new Point(688, 415);
+            btnTiemkiemSP.Location = new Point(698, 502);
             btnTiemkiemSP.Name = "btnTiemkiemSP";
-            btnTiemkiemSP.Size = new Size(88, 23);
+            btnTiemkiemSP.Size = new Size(108, 31);
             btnTiemkiemSP.TabIndex = 15;
             btnTiemkiemSP.Text = "Tìm kiếm";
             btnTiemkiemSP.UseVisualStyleBackColor = true;
+            // 
+            // btnInSP
+            // 
+            btnInSP.Location = new Point(892, 502);
+            btnInSP.Name = "btnInSP";
+            btnInSP.Size = new Size(158, 31);
+            btnInSP.TabIndex = 16;
+            btnInSP.Text = "In danh sách sản phẩm";
+            btnInSP.UseVisualStyleBackColor = true;
             // 
             // F_Sanpham
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1084, 561);
+            Controls.Add(btnInSP);
             Controls.Add(btnTiemkiemSP);
             Controls.Add(btnXoaSP);
             Controls.Add(btnSuaSP);
@@ -230,5 +241,6 @@
         private Button btnSuaSP;
         private Button btnXoaSP;
         private Button btnTiemkiemSP;
+        private Button btnInSP;
     }
 }

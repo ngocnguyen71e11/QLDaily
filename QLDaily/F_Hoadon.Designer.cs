@@ -54,7 +54,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(281, 9);
+            label1.Location = new Point(417, 9);
             label1.Name = "label1";
             label1.Size = new Size(280, 37);
             label1.TabIndex = 0;
@@ -72,7 +72,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(292, 69);
+            label3.Location = new Point(320, 69);
             label3.Name = "label3";
             label3.Size = new Size(61, 15);
             label3.TabIndex = 2;
@@ -87,14 +87,14 @@
             // 
             // txtTenhang
             // 
-            txtTenhang.Location = new Point(359, 61);
+            txtTenhang.Location = new Point(387, 61);
             txtTenhang.Name = "txtTenhang";
             txtTenhang.Size = new Size(174, 23);
             txtTenhang.TabIndex = 5;
             // 
             // txtSoluongban
             // 
-            txtSoluongban.Location = new Point(361, 98);
+            txtSoluongban.Location = new Point(389, 98);
             txtSoluongban.Name = "txtSoluongban";
             txtSoluongban.Size = new Size(172, 23);
             txtSoluongban.TabIndex = 6;
@@ -102,7 +102,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(293, 106);
+            label4.Location = new Point(321, 106);
             label4.Name = "label4";
             label4.Size = new Size(60, 15);
             label4.TabIndex = 3;
@@ -127,7 +127,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(549, 69);
+            label6.Location = new Point(632, 69);
             label6.Name = "label6";
             label6.Size = new Size(54, 15);
             label6.TabIndex = 9;
@@ -135,7 +135,7 @@
             // 
             // txtDongia
             // 
-            txtDongia.Location = new Point(622, 61);
+            txtDongia.Location = new Point(705, 61);
             txtDongia.Name = "txtDongia";
             txtDongia.Size = new Size(167, 23);
             txtDongia.TabIndex = 10;
@@ -143,7 +143,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(549, 108);
+            label7.Location = new Point(632, 108);
             label7.Name = "label7";
             label7.Size = new Size(69, 15);
             label7.TabIndex = 11;
@@ -152,7 +152,7 @@
             // 
             // txtThanhtien
             // 
-            txtThanhtien.Location = new Point(624, 98);
+            txtThanhtien.Location = new Point(707, 98);
             txtThanhtien.Name = "txtThanhtien";
             txtThanhtien.Size = new Size(164, 23);
             txtThanhtien.TabIndex = 12;
@@ -160,15 +160,15 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 150);
+            dataGridView1.Location = new Point(13, 150);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(793, 257);
+            dataGridView1.Size = new Size(1066, 336);
             dataGridView1.TabIndex = 13;
             // 
             // btnThemHD
             // 
-            btnThemHD.Location = new Point(23, 415);
+            btnThemHD.Location = new Point(14, 504);
             btnThemHD.Name = "btnThemHD";
             btnThemHD.Size = new Size(75, 23);
             btnThemHD.TabIndex = 14;
@@ -177,7 +177,7 @@
             // 
             // btnSuaHD
             // 
-            btnSuaHD.Location = new Point(189, 415);
+            btnSuaHD.Location = new Point(189, 504);
             btnSuaHD.Name = "btnSuaHD";
             btnSuaHD.Size = new Size(75, 23);
             btnSuaHD.TabIndex = 15;
@@ -186,7 +186,7 @@
             // 
             // btnInHD
             // 
-            btnInHD.Location = new Point(447, 415);
+            btnInHD.Location = new Point(688, 504);
             btnInHD.Name = "btnInHD";
             btnInHD.Size = new Size(75, 23);
             btnInHD.TabIndex = 16;
@@ -195,7 +195,7 @@
             // 
             // btnTimkiemHD
             // 
-            btnTimkiemHD.Location = new Point(622, 413);
+            btnTimkiemHD.Location = new Point(927, 504);
             btnTimkiemHD.Name = "btnTimkiemHD";
             btnTimkiemHD.Size = new Size(123, 23);
             btnTimkiemHD.TabIndex = 17;
@@ -206,7 +206,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1084, 561);
             Controls.Add(btnTimkiemHD);
             Controls.Add(btnInHD);
             Controls.Add(btnSuaHD);
