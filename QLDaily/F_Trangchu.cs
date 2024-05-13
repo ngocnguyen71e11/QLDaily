@@ -22,13 +22,13 @@ namespace QLDaily
 
         }
 
-        private void btn_FSanpham_Click(object sender, EventArgs e)
+        private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             F_Sanpham f_sanpham = new F_Sanpham();
             f_sanpham.Show();
         }
 
-        private void btn_FHoadon_Click(object sender, EventArgs e)
+        private void bánHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             F_Hoadon f_hoadon = new F_Hoadon();
             f_hoadon.Show();

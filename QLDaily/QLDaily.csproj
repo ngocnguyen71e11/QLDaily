@@ -6,9 +6,36 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>retail_sale_internet_buy_store_business_purchase_online_woman_ecommerce_icon_262665.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Report1.rdlc" />
+    <None Remove="rpDanhsachSP.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="rpDanhsachSP.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.19" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="db_QLDailyDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>db_QLDailyDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="db_QLDailyDataSet1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>db_QLDailyDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -21,6 +48,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="db_QLDailyDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_QLDailyDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="db_QLDailyDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_QLDailyDataSet1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

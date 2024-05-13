@@ -28,46 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_FSanpham = new Button();
-            btn_FHoadon = new Button();
+            menuStrip1 = new MenuStrip();
+            hệThốngToolStripMenuItem = new ToolStripMenuItem();
+            quảnLýToolStripMenuItem = new ToolStripMenuItem();
+            sảnPhẩmToolStripMenuItem = new ToolStripMenuItem();
+            nhàCungCấpToolStripMenuItem = new ToolStripMenuItem();
+            thốngKêToolStripMenuItem = new ToolStripMenuItem();
+            giaoDịchToolStripMenuItem = new ToolStripMenuItem();
+            bánHàngToolStripMenuItem = new ToolStripMenuItem();
+            giớiThiệuToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // btn_FSanpham
+            // menuStrip1
             // 
-            btn_FSanpham.Location = new Point(294, 51);
-            btn_FSanpham.Name = "btn_FSanpham";
-            btn_FSanpham.Size = new Size(155, 70);
-            btn_FSanpham.TabIndex = 0;
-            btn_FSanpham.Text = "Quản lý sản phẩm";
-            btn_FSanpham.UseVisualStyleBackColor = true;
-            btn_FSanpham.Click += btn_FSanpham_Click;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { hệThốngToolStripMenuItem, quảnLýToolStripMenuItem, thốngKêToolStripMenuItem, giaoDịchToolStripMenuItem, giớiThiệuToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(9, 3, 0, 3);
+            menuStrip1.Size = new Size(1703, 40);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // btn_FHoadon
+            // hệThốngToolStripMenuItem
             // 
-            btn_FHoadon.Location = new Point(523, 51);
-            btn_FHoadon.Name = "btn_FHoadon";
-            btn_FHoadon.Size = new Size(155, 70);
-            btn_FHoadon.TabIndex = 1;
-            btn_FHoadon.Text = "Quản lý bán hàng";
-            btn_FHoadon.UseVisualStyleBackColor = true;
-            btn_FHoadon.Click += btn_FHoadon_Click;
+            hệThốngToolStripMenuItem.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
+            hệThốngToolStripMenuItem.Size = new Size(115, 34);
+            hệThốngToolStripMenuItem.Text = "Hệ thống";
+            // 
+            // quảnLýToolStripMenuItem
+            // 
+            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sảnPhẩmToolStripMenuItem, nhàCungCấpToolStripMenuItem });
+            quảnLýToolStripMenuItem.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
+            quảnLýToolStripMenuItem.Size = new Size(98, 34);
+            quảnLýToolStripMenuItem.Text = "Quản lý";
+            // 
+            // sảnPhẩmToolStripMenuItem
+            // 
+            sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
+            sảnPhẩmToolStripMenuItem.Size = new Size(218, 34);
+            sảnPhẩmToolStripMenuItem.Text = "Sản phẩm";
+            sảnPhẩmToolStripMenuItem.Click += sảnPhẩmToolStripMenuItem_Click;
+            // 
+            // nhàCungCấpToolStripMenuItem
+            // 
+            nhàCungCấpToolStripMenuItem.Name = "nhàCungCấpToolStripMenuItem";
+            nhàCungCấpToolStripMenuItem.Size = new Size(218, 34);
+            nhàCungCấpToolStripMenuItem.Text = "Nhà cung cấp";
+            // 
+            // thốngKêToolStripMenuItem
+            // 
+            thốngKêToolStripMenuItem.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
+            thốngKêToolStripMenuItem.Size = new Size(115, 34);
+            thốngKêToolStripMenuItem.Text = "Thống kê";
+            // 
+            // giaoDịchToolStripMenuItem
+            // 
+            giaoDịchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bánHàngToolStripMenuItem });
+            giaoDịchToolStripMenuItem.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            giaoDịchToolStripMenuItem.Name = "giaoDịchToolStripMenuItem";
+            giaoDịchToolStripMenuItem.Size = new Size(115, 34);
+            giaoDịchToolStripMenuItem.Text = "Giao dịch";
+            // 
+            // bánHàngToolStripMenuItem
+            // 
+            bánHàngToolStripMenuItem.Name = "bánHàngToolStripMenuItem";
+            bánHàngToolStripMenuItem.Size = new Size(180, 34);
+            bánHàngToolStripMenuItem.Text = "Bán hàng";
+            bánHàngToolStripMenuItem.Click += bánHàngToolStripMenuItem_Click;
+            // 
+            // giớiThiệuToolStripMenuItem
+            // 
+            giớiThiệuToolStripMenuItem.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            giớiThiệuToolStripMenuItem.Name = "giớiThiệuToolStripMenuItem";
+            giớiThiệuToolStripMenuItem.Size = new Size(117, 34);
+            giớiThiệuToolStripMenuItem.Text = "Giới thiệu";
             // 
             // F_Trangchu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1084, 561);
-            Controls.Add(btn_FHoadon);
-            Controls.Add(btn_FSanpham);
+            ClientSize = new Size(1703, 935);
+            Controls.Add(menuStrip1);
+            Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "F_Trangchu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "F_Trangchu";
             Load += F_Trangchu_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button btn_FSanpham;
-        private Button btn_FHoadon;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem hệThốngToolStripMenuItem;
+        private ToolStripMenuItem quảnLýToolStripMenuItem;
+        private ToolStripMenuItem sảnPhẩmToolStripMenuItem;
+        private ToolStripMenuItem nhàCungCấpToolStripMenuItem;
+        private ToolStripMenuItem thốngKêToolStripMenuItem;
+        private ToolStripMenuItem giaoDịchToolStripMenuItem;
+        private ToolStripMenuItem giớiThiệuToolStripMenuItem;
+        private ToolStripMenuItem bánHàngToolStripMenuItem;
     }
 }
