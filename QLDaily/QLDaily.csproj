@@ -36,6 +36,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>db_QLDailyDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Update="db_QLDailyDataSet2.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>db_QLDailyDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -58,6 +63,10 @@
     <None Update="db_QLDailyDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>db_QLDailyDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="db_QLDailyDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_QLDailyDataSet2.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
