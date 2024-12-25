@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            label10 = new Label();
             btnThem = new Button();
             lbBangchu = new Label();
             txtMaHD = new TextBox();
@@ -39,6 +40,11 @@
             dTPNgayban = new DateTimePicker();
             label3 = new Label();
             groupBox2 = new GroupBox();
+            cbxTenSP = new ComboBox();
+            button1 = new Button();
+            label9 = new Label();
+            txtChietkhau = new TextBox();
+            label8 = new Label();
             btnHuy = new Button();
             txtMahang = new TextBox();
             txtThanhtien = new TextBox();
@@ -51,6 +57,7 @@
             label6 = new Label();
             label4 = new Label();
             dgCTHD = new DataGridView();
+            cbxKhachhang = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgCTHD).BeginInit();
@@ -70,6 +77,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cbxKhachhang);
+            groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(lbBangchu);
             groupBox1.Controls.Add(txtMaHD);
@@ -86,6 +95,17 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(10, 127);
+            label10.Margin = new Padding(5, 0, 5, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(112, 25);
+            label10.TabIndex = 19;
+            label10.Text = "Khách hàng";
             // 
             // btnThem
             // 
@@ -130,7 +150,7 @@
             // 
             // txtTongtien
             // 
-            txtTongtien.Location = new Point(132, 158);
+            txtTongtien.Location = new Point(132, 165);
             txtTongtien.Margin = new Padding(5);
             txtTongtien.Name = "txtTongtien";
             txtTongtien.Size = new Size(358, 32);
@@ -140,7 +160,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(9, 158);
+            label2.Location = new Point(9, 165);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
             label2.Size = new Size(92, 25);
@@ -149,7 +169,7 @@
             // 
             // dTPNgayban
             // 
-            dTPNgayban.Location = new Point(132, 92);
+            dTPNgayban.Location = new Point(132, 82);
             dTPNgayban.Margin = new Padding(5);
             dTPNgayban.Name = "dTPNgayban";
             dTPNgayban.Size = new Size(358, 32);
@@ -159,7 +179,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(9, 98);
+            label3.Location = new Point(10, 81);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
             label3.Size = new Size(93, 25);
@@ -168,6 +188,11 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(cbxTenSP);
+            groupBox2.Controls.Add(button1);
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(txtChietkhau);
+            groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(btnHuy);
             groupBox2.Controls.Add(txtMahang);
             groupBox2.Controls.Add(txtThanhtien);
@@ -188,6 +213,52 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin chi tiết";
             // 
+            // cbxTenSP
+            // 
+            cbxTenSP.FormattingEnabled = true;
+            cbxTenSP.Location = new Point(566, 42);
+            cbxTenSP.Name = "cbxTenSP";
+            cbxTenSP.Size = new Size(428, 33);
+            cbxTenSP.TabIndex = 6;
+            cbxTenSP.TextChanged += cbxTenSP_TextChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(867, 119);
+            button1.Name = "button1";
+            button1.Size = new Size(127, 42);
+            button1.TabIndex = 26;
+            button1.Text = "Tìm kiếm";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(419, 47);
+            label9.Margin = new Padding(5, 0, 5, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(128, 25);
+            label9.TabIndex = 24;
+            label9.Text = "Tên sản phẩm";
+            // 
+            // txtChietkhau
+            // 
+            txtChietkhau.Location = new Point(359, 124);
+            txtChietkhau.Margin = new Padding(5);
+            txtChietkhau.Name = "txtChietkhau";
+            txtChietkhau.Size = new Size(174, 32);
+            txtChietkhau.TabIndex = 23;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(253, 129);
+            label8.Margin = new Padding(5, 0, 5, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(102, 25);
+            label8.TabIndex = 22;
+            label8.Text = "Chiết khấu";
+            // 
             // btnHuy
             // 
             btnHuy.Location = new Point(671, 197);
@@ -204,22 +275,22 @@
             txtMahang.Location = new Point(110, 43);
             txtMahang.Margin = new Padding(5);
             txtMahang.Name = "txtMahang";
-            txtMahang.Size = new Size(358, 32);
+            txtMahang.Size = new Size(299, 32);
             txtMahang.TabIndex = 20;
             txtMahang.TextChanged += txtMahang_TextChanged;
             // 
             // txtThanhtien
             // 
-            txtThanhtien.Location = new Point(393, 122);
+            txtThanhtien.Location = new Point(655, 126);
             txtThanhtien.Margin = new Padding(5);
             txtThanhtien.Name = "txtThanhtien";
-            txtThanhtien.Size = new Size(358, 32);
+            txtThanhtien.Size = new Size(173, 32);
             txtThanhtien.TabIndex = 19;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(272, 127);
+            label7.Location = new Point(543, 128);
             label7.Margin = new Padding(5, 0, 5, 0);
             label7.Name = "label7";
             label7.Size = new Size(102, 25);
@@ -272,16 +343,16 @@
             // 
             // txtSoluong
             // 
-            txtSoluong.Location = new Point(649, 43);
+            txtSoluong.Location = new Point(110, 129);
             txtSoluong.Margin = new Padding(5);
             txtSoluong.Name = "txtSoluong";
-            txtSoluong.Size = new Size(358, 32);
+            txtSoluong.Size = new Size(133, 32);
             txtSoluong.TabIndex = 7;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(520, 48);
+            label6.Location = new Point(10, 131);
             label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
             label6.Size = new Size(87, 25);
@@ -291,7 +362,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(9, 57);
+            label4.Location = new Point(10, 49);
             label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
             label4.Size = new Size(87, 25);
@@ -308,6 +379,15 @@
             dgCTHD.Size = new Size(1659, 517);
             dgCTHD.TabIndex = 5;
             dgCTHD.CellContentClick += dgCTHD_CellContentClick;
+            // 
+            // cbxKhachhang
+            // 
+            cbxKhachhang.FormattingEnabled = true;
+            cbxKhachhang.Location = new Point(130, 120);
+            cbxKhachhang.Name = "cbxKhachhang";
+            cbxKhachhang.Size = new Size(360, 33);
+            cbxKhachhang.TabIndex = 20;
+            cbxKhachhang.TextChanged += cbxKhachhang_TextChanged;
             // 
             // F_Hoadon
             // 
@@ -359,5 +439,12 @@
         private Label label7;
         private TextBox txtMahang;
         private Button btnHuy;
+        private TextBox txtChietkhau;
+        private Label label8;
+        private Label label9;
+        private ComboBox cbxTenSP;
+        private Button button1;
+        private Label label10;
+        private ComboBox cbxKhachhang;
     }
 }

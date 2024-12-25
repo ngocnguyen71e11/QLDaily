@@ -75,66 +75,55 @@ namespace QLDaily
         {
             int mLen, mDigit;
             string mTemp = "";
-            string[] mNumText;
-            // Xóa các dấu ","
-            sNumber = sNumber.Replace(",", "");
-            mNumText = "không;một;hai;ba;bốn;năm;sáu;bảy;tám;chín".Split(';');
-            mLen = sNumber.Length - 1;
+            string[] mNumText = "không;một;hai;ba;bốn;năm;sáu;bảy;tám;chín".Split(';');
+            sNumber = sNumber.Replace(",", "").Trim();
+            mLen = sNumber.Length;
 
-            int count = 0; // Đếm số lần đã thêm "tỷ", "triệu", "nghìn"
-            for (int i = 0; i <= mLen; i++)
+            for (int i = 0; i < mLen; i++)
             {
                 mDigit = Convert.ToInt32(sNumber.Substring(i, 1));
-                mTemp = mTemp + " " + mNumText[mDigit];
-                if (mLen == i) // Chữ số cuối cùng không cần xét tiếp
+                int pos = mLen - i; 
+                bool isLast = (i == mLen - 1); 
+
+                if (mDigit != 0 || (pos % 3 == 1 && isLast)) 
                 {
-                    // Xét phần dư của độ dài chuỗi số để xác định đơn vị đang xét là tỷ, triệu, hay nghìn
-                    switch ((mLen - i) % 9)
+                    if (!(mDigit == 1 && pos % 3 == 2)) 
+                        mTemp += " " + mNumText[mDigit];
+                }
+
+                if (pos % 3 == 1)
+                {
+                    if (pos > 3)
                     {
-                        case 0:
-                            mTemp = mTemp + " nghìn";
-                            count++;
-                            break;
-                        case 6:
-                            mTemp = mTemp + " triệu";
-                            count++;
-                            break;
-                        case 3:
-                            mTemp = mTemp + " tỷ";
-                            count++;
-                            break;
-                        default:
-                            switch ((mLen - i) % 3)
-                            {
-                                case 2:
-                                    mTemp = mTemp + " trăm";
-                                    break;
-                                case 1:
-                                    mTemp = mTemp + " mươi";
-                                    break;
-                            }
-                            break;
+                        int group = (pos - 1) / 3;
+                        mTemp += group == 1 ? " nghìn" : (group == 2 ? " triệu" : " tỷ");
                     }
                 }
-                else if ((mLen - i) % 3 == 0 && count < 3) // Xét mỗi 3 chữ số để thêm "tỷ", "triệu", "nghìn"
+                else if (pos % 3 == 2) 
                 {
-                    mTemp += " " + ((mLen - i) / 3 == 1 ? "nghìn" : ((mLen - i) / 3 == 2 ? "triệu" : "tỷ"));
-                    count++;
+                    if (mDigit != 0)
+                        mTemp += " mươi";
+                    else if (!isLast)
+                        mTemp += " linh";
+                }
+                {
+                    mTemp += " trăm";
                 }
             }
 
-            // Thay thế và chuẩn hóa kết quả
-            mTemp = mTemp.Replace("không mươi không ", "");
-            mTemp = mTemp.Replace("không mươi không", "");
-            mTemp = mTemp.Replace("không mươi ", "linh ");
-            mTemp = mTemp.Replace("mươi không", "mươi");
-            mTemp = mTemp.Replace("một mươi", "mười");
-            mTemp = mTemp.Replace("mươi bốn", "mươi tư");
-            mTemp = mTemp.Replace("linh bốn", "linh tư");
+            mTemp = mTemp.Replace("mươi không", "mươi"); 
+            mTemp = mTemp.Replace("mười năm", "mười lăm"); 
             mTemp = mTemp.Replace("mươi năm", "mươi lăm");
-            mTemp = mTemp.Replace("mươi một", "mươi mốt");
-            mTemp = mTemp.Replace("mười năm", "mười lăm");
+            mTemp = mTemp.Replace("mươi một", "mươi mốt"); 
+            mTemp = mTemp.Replace("mươi bốn", "mươi tư"); 
+            mTemp = mTemp.Replace("linh bốn", "linh tư"); 
+
             mTemp = mTemp.Trim();
+            if (mTemp.EndsWith("linh không"))
+            {
+                mTemp = mTemp.Substring(0, mTemp.Length - "linh không".Length).Trim();
+            }
+
             mTemp = mTemp.Substring(0, 1).ToUpper() + mTemp.Substring(1) + " đồng";
             return mTemp;
         }
@@ -144,7 +133,7 @@ namespace QLDaily
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
             {
                 cnn.Open();
-                string sql = "SELECT cthd.FK_sSanphamID, sp.sTensanpham, cthd.iSoluongmua, sp.sDonvitinh, sp.fDongia, cthd.fTongHD " +
+                string sql = "SELECT cthd.FK_sSanphamID, sp.sTensanpham, cthd.iSoluongmua, sp.sDonvitinh, sp.fDongia, cthd.fChietkhau, cthd.fTongHD " +
                          "FROM tbl_CTHoadon AS cthd INNER JOIN tblSanpham AS sp ON cthd.FK_sSanphamID = sp.PK_sSanphamID " +
                          "WHERE cthd.FK_sHoadonID = N'" + txtMaHD.Text + "'";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
@@ -159,7 +148,8 @@ namespace QLDaily
                         dgCTHD.Columns[2].HeaderText = "Số lượng";
                         dgCTHD.Columns[3].HeaderText = "Đơn vị tính";
                         dgCTHD.Columns[4].HeaderText = "Đơn giá";
-                        dgCTHD.Columns[5].HeaderText = "Thành tiền";
+                        dgCTHD.Columns[5].HeaderText = "Chiết khấu";
+                        dgCTHD.Columns[6].HeaderText = "Thành tiền";
                         GetSizeColumn();
                         dgCTHD.AllowUserToAddRows = false;
                         dgCTHD.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -170,7 +160,6 @@ namespace QLDaily
             }
 
         }
-
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -189,18 +178,15 @@ namespace QLDaily
             string key = tiento;
             string[] partsDay;
             partsDay = DateTime.Now.ToShortDateString().Split('/');
-            //Ví dụ 07/08/2009
             string d = String.Format("{0}{1}{2}", partsDay[0], partsDay[1], partsDay[2]);
             key = key + d;
             string[] partsTime;
             partsTime = DateTime.Now.ToLongTimeString().Split(':');
-            //Ví dụ 7:08:03 PM hoặc 7:08:03 AM
             if (partsTime[2].Substring(3, 2) == "PM")
                 partsTime[0] = ConvertTimeTo24(partsTime[0]);
             if (partsTime[2].Substring(3, 2) == "AM")
                 if (partsTime[0].Length == 1)
                     partsTime[0] = "0" + partsTime[0];
-            //Xóa ký tự trắng và PM hoặc AM
             partsTime[2] = partsTime[2].Remove(2, 3);
             string t;
             t = String.Format("_{0}{1}{2}", partsTime[0], partsTime[1], partsTime[2]);
@@ -264,7 +250,6 @@ namespace QLDaily
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                // Thực hiện lưu dữ liệu và hiển thị
                 LuuVaHienThiDuLieu();
             }
         }
@@ -273,7 +258,6 @@ namespace QLDaily
 
             if (txtMahang.Text.Length == 13)
             {
-                // Khi chuỗi mã đủ 13 ký tự, kích hoạt sự kiện thêm số lượng
                 txtSoluong.Enabled = true;
                 txtSoluong.Focus();
                 if (!string.IsNullOrEmpty(txtMahang.Text))
@@ -287,41 +271,24 @@ namespace QLDaily
             }
             else
             {
-                // Nếu chuỗi mã không đủ 13 ký tự, vô hiệu hóa việc nhập số lượng
                 txtSoluong.Text = "";
             }
-            if (!string.IsNullOrEmpty(txtMahang.Text) && !string.IsNullOrEmpty(txtSoluong.Text) && !string.IsNullOrEmpty(txtSoluong.Text.Trim()) && txtSoluong.Text != "0")
-            {
-                if (!isSavingData)
-                {
-                    LuuVaHienThiDuLieu();
-                }
-            }
+            
         }
 
         private void txtSoluong_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMahang.Text) && !string.IsNullOrEmpty(txtSoluong.Text) && !string.IsNullOrEmpty(txtSoluong.Text.Trim()) && txtSoluong.Text != "0")
-            {
-                if (!isSavingData)
-                {
-                    LuuVaHienThiDuLieu();
-                }
-            }
+            
         }
-        bool isSavingData = false;
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            allowSave = true;
             LuuVaHienThiDuLieu();
         }
         private void LuuVaHienThiDuLieu()
         {
-            if (!allowSave)
-                return;
+            
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
             {
-                isSavingData = true;
                 cnn.Open();
                 double sl = 0;
                 string sql = "SELECT iSoluong FROM tblSanpham WHERE PK_sSanphamID = @PK_sSanphamID";
@@ -351,45 +318,42 @@ namespace QLDaily
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        // Thay thế tham số @MaHoaDon bằng giá trị của txtMaHD.Text
                         command.Parameters.AddWithValue("@MaHoaDon", txtMaHD.Text);
 
                         int count = (int)command.ExecuteScalar();
 
-                        // Nếu không có bản ghi nào tồn tại, thêm một bản ghi mới vào tblHoadon
                         if (count == 0)
                         {
                             dTPNgayban.Format = DateTimePickerFormat.Custom;
                             dTPNgayban.CustomFormat = "yyyy-MM-dd";
 
-                            // Tạo câu lệnh SQL để thêm bản ghi mới vào tblHoadon
-                            sql = "INSERT INTO tblHoadon (PK_sHoadonID, dNgaytaoHD, fTongtien) VALUES (@MaHoaDon, @NgayTaoHD, @TongTien)";
+                            string[] parts = selectedCustomer.Split(new[] { '-' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                            string maKhachHang = parts.Length > 0 ? parts[0].Trim() : "";
 
-                            // Thực thi câu lệnh SQL
+                            sql = "INSERT INTO tblHoadon (PK_sHoadonID, dNgaytaoHD, fTongtien, FK_sSodienthoai) VALUES (@MaHoaDon, @NgayTaoHD, @TongTien, @MaKhachHang)";
+
                             using (SqlCommand insertCommand = new SqlCommand(sql, connection))
                             {
                                 insertCommand.Parameters.AddWithValue("@MaHoaDon", txtMaHD.Text.Trim());
                                 insertCommand.Parameters.AddWithValue("@NgayTaoHD", dTPNgayban.Value);
                                 insertCommand.Parameters.AddWithValue("@TongTien", txtTongtien.Text);
+                                insertCommand.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
 
                                 insertCommand.ExecuteNonQuery();
+                                MessageBox.Show("Hóa đơn được thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hóa đơn đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
 
-                // Insert a new record into tbl_CTHoadon
                 if (txtMahang.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("Bạn phải nhập mã hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtMahang.Focus();
-                    return;
-                }
-                if ((txtSoluong.Text.Trim().Length == 0) || (txtSoluong.Text == "0"))
-                {
-                    MessageBox.Show("Bạn phải nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtSoluong.Text = "";
-                    txtSoluong.Focus();
                     return;
                 }
                 sql = "SELECT FK_sSanphamID FROM tbl_CTHoadon WHERE FK_sSanphamID=N'" + txtMahang + "' AND FK_sHoadonID = N'" + txtMaHD.Text.Trim() + "'";
@@ -422,7 +386,6 @@ namespace QLDaily
                 double donGia = 0;
                 string sqlSelectDonGia = "SELECT fDongia FROM tblSanpham WHERE PK_sSanphamID = @PK_sSanphamID";
 
-                // Thực hiện truy vấn để lấy giá đơn vị từ bảng tblSanpham
                 using (SqlCommand commandSelectDonGia = new SqlCommand(sqlSelectDonGia, cnn))
                 {
                     commandSelectDonGia.Parameters.AddWithValue("@PK_sSanphamID", txtMahang.Text.Trim());
@@ -432,33 +395,40 @@ namespace QLDaily
                         donGia = Convert.ToDouble(result);
                     }
                 }
+                double chietkhau = Convert.ToDouble(txtChietkhau.Text);
 
-                // Tính giá trị của txtThanhtien
-                double thanhTien = Convert.ToDouble(txtSoluong.Text) * donGia;
-                sql = "INSERT INTO tbl_CTHoadon(FK_sSanphamID,FK_sHoadonID,iSoluongmua,fTongHD) VALUES(@FK_sSanphamID, @FK_sHoadonID, @iSoluongmua, @fTongHD)";
+                if (!string.IsNullOrWhiteSpace(txtChietkhau.Text))
+                {
+                    if (!double.TryParse(txtChietkhau.Text, out chietkhau))
+                    {
+                        MessageBox.Show("Giá trị chiết khấu không hợp lệ. Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtChietkhau.Focus();
+                        return;
+                    }
+                }
+                double thanhTien = Convert.ToDouble(txtSoluong.Text) * donGia - chietkhau;
+                sql = "INSERT INTO tbl_CTHoadon(FK_sSanphamID,FK_sHoadonID,iSoluongmua,fTongHD,fChietkhau) VALUES(@FK_sSanphamID, @FK_sHoadonID, @iSoluongmua, @fTongHD, @fChietkhau)";
                 using (SqlCommand command = new SqlCommand(sql, cnn))
                 {
                     command.Parameters.AddWithValue("@FK_sSanphamID", txtMahang.Text.Trim());
                     command.Parameters.AddWithValue("@FK_sHoadonID", txtMaHD.Text.Trim());
                     command.Parameters.AddWithValue("@iSoluongmua", Convert.ToDouble(txtSoluong.Text));
                     command.Parameters.AddWithValue("@fTongHD", thanhTien);
+                    command.Parameters.AddWithValue("@fChietkhau", chietkhau);
                     command.ExecuteNonQuery();
                 }
                 LoadDataGridView();
-                // Calculate the new quantity in stock
                 double SLcon = sl - Convert.ToDouble(txtSoluong.Text);
 
-                // Update the quantity in stock in tblHang
                 string sqlUpdate = "UPDATE tblSanpham SET iSoluong = @SoLuong WHERE PK_sSanphamID = @MaHang";
                 using (SqlCommand command = new SqlCommand(sqlUpdate, cnn))
                 {
                     command.Parameters.AddWithValue("@SoLuong", SLcon);
-                    command.Parameters.AddWithValue("@MaHang", txtMahang.Text); // Sử dụng .Text để lấy giá trị từ TextBox
+                    command.Parameters.AddWithValue("@MaHang", txtMahang.Text); 
                     command.ExecuteNonQuery();
                 }
 
 
-                // Get the current total price from tblHDBan
                 double tong = 0;
                 double Tongmoi = 0;
                 using (SqlCommand command = new SqlCommand("SELECT fTongtien FROM tblHoadon WHERE PK_sHoadonID = @MaHDBan", cnn))
@@ -483,7 +453,6 @@ namespace QLDaily
                 txtTongtien.Text = Tongmoi.ToString();
                 lbBangchu.Text = "Bằng chữ: " + ChuyenSoSangChu(Tongmoi.ToString());
 
-                // Update the total price in tblHDBan
                 sql = "UPDATE tblHoadon SET fTongtien = @TongTien WHERE PK_sHoadonID = @MaHDBan";
                 using (SqlCommand command = new SqlCommand(sql, cnn))
                 {
@@ -491,14 +460,12 @@ namespace QLDaily
                     command.Parameters.AddWithValue("@MaHDBan", txtMaHD.Text);
                     command.ExecuteNonQuery();
                 }
-                // Update UI elements and enable buttons
                 txtTongtien.Text = Tongmoi.ToString();
                 lbBangchu.Text = "Bằng chữ: " + ChuyenSoSangChu(Tongmoi.ToString());
                 ResetValuesHang();
                 btnSuaHD.Enabled = true;
                 btnThem.Enabled = true;
                 btnIn.Enabled = true;
-                isSavingData = false;
                 txtMahang.Focus();
             }
         }
@@ -532,12 +499,10 @@ namespace QLDaily
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            string maHoaDon = txtMaHD.Text; // Đây là mã hóa đơn đang hiển thị, bạn cần thay đổi cho phù hợp
+            string maHoaDon = txtMaHD.Text; 
 
-            // Tạo một thể hiện mới của form F_Report và truyền mã hóa đơn
             F_Report formReport = new F_Report(maHoaDon);
 
-            // Hiển thị form F_Report dưới dạng hộp thoại
             formReport.ShowDialog();
         }
 
@@ -616,7 +581,6 @@ namespace QLDaily
                     }
                 }
 
-                // Tính toán thành tiền mới
                 thanhTien = Convert.ToDouble(txtSoluong.Text) * donGia;
 
                 // Cập nhật thành tiền trong tbl_CTHoadon
@@ -662,45 +626,164 @@ namespace QLDaily
                     commandUpdateSoLuong.ExecuteNonQuery();
                 }
                 cnn.Close();
-                // Cập nhật lại các UI elements và các giá trị
                 txtTongtien.Text = Tongmoi.ToString();
                 lbBangchu.Text = "Bằng chữ: " + ChuyenSoSangChu(Tongmoi.ToString());
                 ResetValuesHang();
             }
-                // Lấy số lượng còn lại của sản phẩm từ tblSanpham
-                
+
         }
 
         private void GetSizeColumn()
         {
-            dgCTHD.Columns[0].Width = 240;
+            dgCTHD.Columns[0].Width = 230;
             dgCTHD.Columns[1].Width = 540;
-            dgCTHD.Columns[2].Width = 190;
-            dgCTHD.Columns[3].Width = 190;
-            dgCTHD.Columns[4].Width = 190;
-            dgCTHD.Columns[5].Width = 190;
+            dgCTHD.Columns[2].Width = 150;
+            dgCTHD.Columns[3].Width = 150;
+            dgCTHD.Columns[4].Width = 155;
+            dgCTHD.Columns[5].Width = 155;
+            dgCTHD.Columns[6].Width = 155;
         }
 
         private void dgCTHD_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            allowSave = false;
             if (e.RowIndex >= 0 && e.RowIndex < dgCTHD.Rows.Count)
             {
                 DataGridViewRow row = dgCTHD.Rows[e.RowIndex];
-                string maHang = row.Cells[0].Value.ToString(); // Mã hàng
-                string soLuong = row.Cells[2].Value.ToString(); // Số lượng
-                                                                // Hiển thị thông tin lên các điều khiển tương ứng
+                string maHang = row.Cells[0].Value.ToString();
+                string soLuong = row.Cells[2].Value.ToString();
+
                 txtMahang.Text = maHang;
                 txtSoluong.Text = soLuong;
 
-                // Cho phép chỉnh sửa dữ liệu
                 txtMahang.Enabled = true;
                 txtSoluong.Enabled = true;
 
-                // Vô hiệu hóa việc lưu tự động
                 btnLuu.Enabled = false;
             }
         }
-        private bool allowSave = true;
+
+        private void cbxTenSP_TextChanged(object sender, EventArgs e)
+        {
+            string searchKeyword = cbxTenSP.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchKeyword))
+            {
+                cbxTenSP.DroppedDown = false;
+                cbxTenSP.Items.Clear();
+                return;
+            }
+
+            string currentText = cbxTenSP.Text;
+
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
+                {
+                    cnn.Open();
+
+                    string sql = "SELECT PK_sSanphamID, sTenSanpham FROM tblSanpham WHERE sTenSanpham LIKE @Keyword";
+                    using (SqlCommand command = new SqlCommand(sql, cnn))
+                    {
+                        command.Parameters.AddWithValue("@Keyword", "%" + searchKeyword + "%");
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            List<string> items = new List<string>();
+                            while (reader.Read())
+                            {
+                                string item = $"{reader["PK_sSanphamID"]} - {reader["sTenSanpham"]}";
+                                items.Add(item);
+                            }
+
+                            cbxTenSP.BeginUpdate();
+                            if (items.Count > 0)
+                            {
+                                cbxTenSP.Items.AddRange(items.ToArray());
+                                cbxTenSP.DroppedDown = true;
+                            }
+                            cbxTenSP.EndUpdate();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xảy ra: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (cbxTenSP.SelectedItem != null)
+            {
+                string selectedItem = cbxTenSP.SelectedItem.ToString();
+                string[] parts = selectedItem.Split(new[] { '-' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length > 0)
+                {
+                    txtMahang.Text = parts[0].Trim(); 
+                }
+            }
+            cbxTenSP.Text = currentText;
+            cbxTenSP.SelectionStart = currentText.Length;
+            cbxTenSP.SelectionLength = 0;
+        }
+
+        private string selectedCustomer = ""; 
+
+        private void cbxKhachhang_TextChanged(object sender, EventArgs e)
+        {
+            string searchKeyword = cbxKhachhang.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchKeyword))
+            {
+                cbxKhachhang.DroppedDown = false;
+                cbxKhachhang.Items.Clear();
+                return;
+            }
+
+            string currentText = cbxKhachhang.Text;
+
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
+                {
+                    cnn.Open();
+
+                    string sql = "SELECT sDienthoai, sTenkhachhang FROM tblKhachhang WHERE sTenkhachhang LIKE @Keyword";
+                    using (SqlCommand command = new SqlCommand(sql, cnn))
+                    {
+                        command.Parameters.AddWithValue("@Keyword", "%" + searchKeyword + "%");
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            List<string> items = new List<string>();
+                            while (reader.Read())
+                            {
+                                string item = $"{reader["sDienthoai"]} - {reader["sTenkhachhang"]}";
+                                items.Add(item);
+                            }
+
+                            cbxKhachhang.BeginUpdate();
+                            if (items.Count > 0)
+                            {
+                                cbxKhachhang.Items.AddRange(items.ToArray());
+                                cbxKhachhang.DroppedDown = true;
+                            }
+                            cbxKhachhang.EndUpdate();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xảy ra: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            cbxKhachhang.Text = currentText;
+            cbxKhachhang.SelectionStart = currentText.Length;
+            cbxKhachhang.SelectionLength = 0;
+            selectedCustomer = cbxKhachhang.SelectedValue?.ToString();
+            if (cbxKhachhang.Items.Contains(currentText))
+            {
+                selectedCustomer = currentText; 
+            }
+        }
+
     }
 }
