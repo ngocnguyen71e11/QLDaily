@@ -705,11 +705,16 @@ namespace QLDaily
                             }
 
                             cbxTenSP.BeginUpdate();
+                            foreach (var item in items)
+                            {
+                                cbxTenSP.Items.Insert(0, item); // Đặt item mới vào đầu
+                            }
+
                             if (items.Count > 0)
                             {
-                                cbxTenSP.Items.AddRange(items.ToArray());
                                 cbxTenSP.DroppedDown = true;
                             }
+
                             cbxTenSP.EndUpdate();
                         }
                     }
@@ -769,11 +774,16 @@ namespace QLDaily
                             }
 
                             cbxKhachhang.BeginUpdate();
+                            foreach (var item in items)
+                            {
+                                cbxKhachhang.Items.Insert(0, item); // Đặt item mới vào đầu
+                            }
+
                             if (items.Count > 0)
                             {
-                                cbxKhachhang.Items.AddRange(items.ToArray());
                                 cbxKhachhang.DroppedDown = true;
                             }
+
                             cbxKhachhang.EndUpdate();
                         }
                     }
@@ -784,15 +794,18 @@ namespace QLDaily
                 MessageBox.Show("Lỗi xảy ra: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            // Giữ nguyên text ban đầu của ComboBox
             cbxKhachhang.Text = currentText;
             cbxKhachhang.SelectionStart = currentText.Length;
             cbxKhachhang.SelectionLength = 0;
+
             selectedCustomer = cbxKhachhang.SelectedValue?.ToString();
             if (cbxKhachhang.Items.Contains(currentText))
             {
                 selectedCustomer = currentText;
             }
         }
+
 
         private void btnThemKH_Click(object sender, EventArgs e)
         {

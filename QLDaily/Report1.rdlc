@@ -21,7 +21,6 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.23376in</Top>
         <Left>2.66171in</Left>
         <Height>0.39583in</Height>
         <Width>3.2675in</Width>
@@ -437,7 +436,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.28584in</Top>
+        <Top>1.78584in</Top>
         <Left>0.5in</Left>
         <Height>0.6875in</Height>
         <Width>7.62213in</Width>
@@ -466,7 +465,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>1.40515in</Top>
+        <Top>0.90515in</Top>
         <Left>1.06796in</Left>
         <Height>0.25in</Height>
         <Width>1.05208in</Width>
@@ -499,7 +498,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>1.40515in</Top>
+        <Top>0.90515in</Top>
         <Left>2.16171in</Left>
         <Height>0.26389in</Height>
         <Width>2.32987in</Width>
@@ -532,7 +531,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>1.41904in</Top>
+        <Top>0.91904in</Top>
         <Left>4.55556in</Left>
         <Height>0.25in</Height>
         <Width>0.6131in</Width>
@@ -565,7 +564,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>1.41904in</Top>
+        <Top>0.91904in</Top>
         <Left>5.21032in</Left>
         <Height>0.25in</Height>
         <Width>1.99653in</Width>
@@ -598,7 +597,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>1.83792in</Top>
+        <Top>1.33792in</Top>
         <Left>1.06796in</Left>
         <Height>0.25in</Height>
         <Width>0.67708in</Width>
@@ -631,7 +630,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>1.83792in</Top>
+        <Top>1.33792in</Top>
         <Left>1.81449in</Left>
         <Height>0.25in</Height>
         <Width>5.14236in</Width>
@@ -664,7 +663,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.81028in</Top>
+        <Top>0.43528in</Top>
         <Left>2.66816in</Left>
         <Height>0.35417in</Height>
         <Width>0.54167in</Width>
@@ -697,7 +696,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>0.81028in</Top>
+        <Top>0.43528in</Top>
         <Left>2.95983in</Left>
         <Height>0.35417in</Height>
         <Width>2.87625in</Width>
@@ -713,7 +712,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.11334in</Height>
+    <Height>2.57167in</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -723,7 +722,7 @@
   <Width>10.36458in</Width>
   <Page>
     <PageHeader>
-      <Height>3.32167in</Height>
+      <Height>2.01959in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -749,7 +748,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
           <Top>0.25695in</Top>
-          <Left>2.62713in</Left>
+          <Left>1.00213in</Left>
           <Height>0.33333in</Height>
           <Width>2.80208in</Width>
           <Style>
@@ -781,7 +780,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
           <Top>1.28347in</Top>
-          <Left>2.51254in</Left>
+          <Left>0.88754in</Left>
           <Height>0.41667in</Height>
           <Width>3.40624in</Width>
           <ZIndex>1</ZIndex>
@@ -813,8 +812,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>2.06847in</Top>
-          <Left>2.51254in</Left>
+          <Top>0.5in</Top>
+          <Left>5.01254in</Left>
           <Height>0.35417in</Height>
           <Width>1.05208in</Width>
           <ZIndex>2</ZIndex>
@@ -846,8 +845,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.06847in</Top>
-          <Left>3.57851in</Left>
+          <Top>0.5in</Top>
+          <Left>6.07851in</Left>
           <Height>0.35417in</Height>
           <Width>2.33333in</Width>
           <ZIndex>3</ZIndex>
@@ -896,9 +895,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.60417in</Top>
-          <Left>1.30421in</Left>
+          <Left>0.21046in</Left>
           <Height>0.73486in</Height>
-          <Width>5.51501in</Width>
+          <Width>4.59174in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -914,8 +913,8 @@
           <Source>Embedded</Source>
           <Value>ID1</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>2.31722in</Top>
-          <Left>2.60851in</Left>
+          <Top>0.81722in</Top>
+          <Left>5.10851in</Left>
           <Height>0.93056in</Height>
           <Width>1.01042in</Width>
           <ZIndex>5</ZIndex>
@@ -929,8 +928,8 @@
           <Source>Embedded</Source>
           <Value>ID2</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>2.54167in</Top>
-          <Left>3.8368in</Left>
+          <Top>1.04167in</Top>
+          <Left>6.3368in</Left>
           <Height>0.5in</Height>
           <Width>1.95289in</Width>
           <ZIndex>6</ZIndex>
@@ -958,8 +957,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.70014in</Top>
-          <Left>2.51254in</Left>
+          <Top>1.57514in</Top>
+          <Left>0.88754in</Left>
           <Height>0.41667in</Height>
           <Width>3.40624in</Width>
           <ZIndex>7</ZIndex>
@@ -994,7 +993,7 @@
                 <TextRun>
                   <Value>Tổng tiền:</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
+                    <FontFamily>times New Roman</FontFamily>
                     <FontSize>14pt</FontSize>
                   </Style>
                 </TextRun>
@@ -1026,7 +1025,7 @@
                 <TextRun>
                   <Value>=Fields!Tongtien.Value</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
+                    <FontFamily>times New Roman</FontFamily>
                     <FontSize>14pt</FontSize>
                   </Style>
                 </TextRun>
