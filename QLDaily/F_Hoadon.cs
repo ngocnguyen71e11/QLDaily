@@ -69,8 +69,6 @@ namespace QLDaily
                 cnn.Close();
             }
         }
-
-
         public static string ChuyenSoSangChu(string sNumber)
         {
             int mLen, mDigit;
@@ -79,15 +77,21 @@ namespace QLDaily
             sNumber = sNumber.Replace(",", "").Trim();
             mLen = sNumber.Length;
 
+            // Kiểm tra trường hợp số là 0
+            if (sNumber == "0")
+            {
+                return "Không đồng";
+            }
+
             for (int i = 0; i < mLen; i++)
             {
                 mDigit = Convert.ToInt32(sNumber.Substring(i, 1));
-                int pos = mLen - i; 
-                bool isLast = (i == mLen - 1); 
+                int pos = mLen - i;
+                bool isLast = (i == mLen - 1);
 
-                if (mDigit != 0 || (pos % 3 == 1 && isLast)) 
+                if (mDigit != 0 || (pos % 3 == 1 && isLast))
                 {
-                    if (!(mDigit == 1 && pos % 3 == 2)) 
+                    if (!(mDigit == 1 && pos % 3 == 2 && mLen > 4)) // Chỉnh sửa cho trường hợp "mười nghìn"
                         mTemp += " " + mNumText[mDigit];
                 }
 
@@ -99,24 +103,25 @@ namespace QLDaily
                         mTemp += group == 1 ? " nghìn" : (group == 2 ? " triệu" : " tỷ");
                     }
                 }
-                else if (pos % 3 == 2) 
+                else if (pos % 3 == 2)
                 {
                     if (mDigit != 0)
                         mTemp += " mươi";
                     else if (!isLast)
                         mTemp += " linh";
                 }
+                if (pos % 3 == 0 && mDigit != 0)
                 {
                     mTemp += " trăm";
                 }
             }
 
-            mTemp = mTemp.Replace("mươi không", "mươi"); 
-            mTemp = mTemp.Replace("mười năm", "mười lăm"); 
+            mTemp = mTemp.Replace("mươi không", "mươi");
+            mTemp = mTemp.Replace("mười năm", "mười lăm");
             mTemp = mTemp.Replace("mươi năm", "mươi lăm");
-            mTemp = mTemp.Replace("mươi một", "mươi mốt"); 
-            mTemp = mTemp.Replace("mươi bốn", "mươi tư"); 
-            mTemp = mTemp.Replace("linh bốn", "linh tư"); 
+            mTemp = mTemp.Replace("mươi một", "mươi mốt");
+            mTemp = mTemp.Replace("mươi bốn", "mươi tư");
+            mTemp = mTemp.Replace("linh bốn", "linh tư");
 
             mTemp = mTemp.Trim();
             if (mTemp.EndsWith("linh không"))
@@ -127,6 +132,7 @@ namespace QLDaily
             mTemp = mTemp.Substring(0, 1).ToUpper() + mTemp.Substring(1) + " đồng";
             return mTemp;
         }
+
 
         private void LoadDataGridView()
         {
@@ -242,6 +248,7 @@ namespace QLDaily
             txtMaHD.Text = "";
             dTPNgayban.Text = DateTime.Now.ToShortDateString();
             txtTongtien.Text = "0";
+            txtChietkhau.Text = "0";
             lbBangchu.Text = "Bằng chữ: ";
             txtMahang.Text = "";
             txtSoluong.Text = "";
@@ -273,12 +280,12 @@ namespace QLDaily
             {
                 txtSoluong.Text = "";
             }
-            
+
         }
 
         private void txtSoluong_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -286,7 +293,7 @@ namespace QLDaily
         }
         private void LuuVaHienThiDuLieu()
         {
-            
+
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
             {
                 cnn.Open();
@@ -307,6 +314,11 @@ namespace QLDaily
                     MessageBox.Show("Số lượng mặt hàng này chỉ còn " + sl, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtSoluong.Text = "";
                     txtSoluong.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(cbxKhachhang.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn khách hàng trước khi thêm hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 // Kiểm tra xem có bản ghi nào trong tblHoadon có PK_sHoadonID là giá trị của txtMaHD.Text không
@@ -338,14 +350,8 @@ namespace QLDaily
                                 insertCommand.Parameters.AddWithValue("@NgayTaoHD", dTPNgayban.Value);
                                 insertCommand.Parameters.AddWithValue("@TongTien", txtTongtien.Text);
                                 insertCommand.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
-
                                 insertCommand.ExecuteNonQuery();
-                                MessageBox.Show("Hóa đơn được thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Hóa đơn đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -406,7 +412,7 @@ namespace QLDaily
                         return;
                     }
                 }
-                double thanhTien = Convert.ToDouble(txtSoluong.Text) * donGia - chietkhau;
+                double thanhTien = Convert.ToDouble(txtSoluong.Text) * (donGia - chietkhau);
                 sql = "INSERT INTO tbl_CTHoadon(FK_sSanphamID,FK_sHoadonID,iSoluongmua,fTongHD,fChietkhau) VALUES(@FK_sSanphamID, @FK_sHoadonID, @iSoluongmua, @fTongHD, @fChietkhau)";
                 using (SqlCommand command = new SqlCommand(sql, cnn))
                 {
@@ -424,7 +430,7 @@ namespace QLDaily
                 using (SqlCommand command = new SqlCommand(sqlUpdate, cnn))
                 {
                     command.Parameters.AddWithValue("@SoLuong", SLcon);
-                    command.Parameters.AddWithValue("@MaHang", txtMahang.Text); 
+                    command.Parameters.AddWithValue("@MaHang", txtMahang.Text);
                     command.ExecuteNonQuery();
                 }
 
@@ -460,6 +466,7 @@ namespace QLDaily
                     command.Parameters.AddWithValue("@MaHDBan", txtMaHD.Text);
                     command.ExecuteNonQuery();
                 }
+                txtThanhtien.Text = thanhTien.ToString();
                 txtTongtien.Text = Tongmoi.ToString();
                 lbBangchu.Text = "Bằng chữ: " + ChuyenSoSangChu(Tongmoi.ToString());
                 ResetValuesHang();
@@ -487,7 +494,8 @@ namespace QLDaily
         {
             txtMahang.Text = "";
             txtSoluong.Text = "";
-            txtTongtien.Text = "0";
+            //txtTongtien.Text = "0";
+            txtChietkhau.Text = "0";
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -499,7 +507,8 @@ namespace QLDaily
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            string maHoaDon = txtMaHD.Text; 
+            string maHoaDon = txtMaHD.Text;
+            string bangchu = lbBangchu.Text;
 
             F_Report formReport = new F_Report(maHoaDon);
 
@@ -580,15 +589,15 @@ namespace QLDaily
                         donGia = Convert.ToDouble(result);
                     }
                 }
-
-                thanhTien = Convert.ToDouble(txtSoluong.Text) * donGia;
-
+                double chietkhau = Convert.ToDouble(txtChietkhau.Text);
+                thanhTien = Convert.ToDouble(txtSoluong.Text) * (donGia - chietkhau);
                 // Cập nhật thành tiền trong tbl_CTHoadon
-                string sqlUpdateCTHoadon = "UPDATE tbl_CTHoadon SET iSoluongmua = @iSoluongmua, fTongHD = @fTongHD WHERE FK_sSanphamID = @FK_sSanphamID AND FK_sHoadonID = @FK_sHoadonID";
+                string sqlUpdateCTHoadon = "UPDATE tbl_CTHoadon SET fChietkhau = @fChietkhau, iSoluongmua = @iSoluongmua, fTongHD = @fTongHD WHERE FK_sSanphamID = @FK_sSanphamID AND FK_sHoadonID = @FK_sHoadonID";
                 using (SqlCommand commandUpdateCTHoadon = new SqlCommand(sqlUpdateCTHoadon, cnn))
                 {
                     commandUpdateCTHoadon.Parameters.AddWithValue("@iSoluongmua", Convert.ToDouble(txtSoluong.Text));
                     commandUpdateCTHoadon.Parameters.AddWithValue("@fTongHD", thanhTien);
+                    commandUpdateCTHoadon.Parameters.AddWithValue("@fChietkhau", chietkhau);
                     commandUpdateCTHoadon.Parameters.AddWithValue("@FK_sSanphamID", FK_sSanphamID);
                     commandUpdateCTHoadon.Parameters.AddWithValue("@FK_sHoadonID", FK_sHoadonID);
                     commandUpdateCTHoadon.ExecuteNonQuery();
@@ -635,13 +644,13 @@ namespace QLDaily
 
         private void GetSizeColumn()
         {
-            dgCTHD.Columns[0].Width = 230;
-            dgCTHD.Columns[1].Width = 540;
-            dgCTHD.Columns[2].Width = 150;
-            dgCTHD.Columns[3].Width = 150;
-            dgCTHD.Columns[4].Width = 155;
-            dgCTHD.Columns[5].Width = 155;
-            dgCTHD.Columns[6].Width = 155;
+            dgCTHD.Columns[0].Width = 200;
+            dgCTHD.Columns[1].Width = 510;
+            dgCTHD.Columns[2].Width = 120;
+            dgCTHD.Columns[3].Width = 120;
+            dgCTHD.Columns[4].Width = 125;
+            dgCTHD.Columns[5].Width = 125;
+            dgCTHD.Columns[6].Width = 125;
         }
 
         private void dgCTHD_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -716,7 +725,7 @@ namespace QLDaily
                 string[] parts = selectedItem.Split(new[] { '-' }, 2, StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length > 0)
                 {
-                    txtMahang.Text = parts[0].Trim(); 
+                    txtMahang.Text = parts[0].Trim();
                 }
             }
             cbxTenSP.Text = currentText;
@@ -724,7 +733,7 @@ namespace QLDaily
             cbxTenSP.SelectionLength = 0;
         }
 
-        private string selectedCustomer = ""; 
+        private string selectedCustomer = "";
 
         private void cbxKhachhang_TextChanged(object sender, EventArgs e)
         {
@@ -781,9 +790,14 @@ namespace QLDaily
             selectedCustomer = cbxKhachhang.SelectedValue?.ToString();
             if (cbxKhachhang.Items.Contains(currentText))
             {
-                selectedCustomer = currentText; 
+                selectedCustomer = currentText;
             }
         }
 
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            Khachhang f_khachang = new Khachhang();
+            f_khachang.Show();
+        }
     }
 }

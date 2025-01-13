@@ -46,6 +46,9 @@
             btnThoatSP = new Button();
             btnHuySP = new Button();
             txtMaSP = new TextBox();
+            txtGianhap = new TextBox();
+            label7 = new Label();
+            btnTimkiem = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgSanPham).BeginInit();
             SuspendLayout();
             // 
@@ -75,7 +78,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(613, 97);
+            label4.Location = new Point(447, 97);
             label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
             label4.Size = new Size(137, 25);
@@ -84,24 +87,24 @@
             // 
             // txtTenSP
             // 
-            txtTenSP.Location = new Point(838, 100);
-            txtTenSP.Margin = new Padding(5, 5, 5, 5);
+            txtTenSP.Location = new Point(588, 93);
+            txtTenSP.Margin = new Padding(5);
             txtTenSP.Name = "txtTenSP";
             txtTenSP.Size = new Size(290, 32);
             txtTenSP.TabIndex = 5;
             // 
             // txtDVT
             // 
-            txtDVT.Location = new Point(233, 168);
-            txtDVT.Margin = new Padding(5, 5, 5, 5);
+            txtDVT.Location = new Point(120, 168);
+            txtDVT.Margin = new Padding(5);
             txtDVT.Name = "txtDVT";
-            txtDVT.Size = new Size(290, 32);
+            txtDVT.Size = new Size(168, 32);
             txtDVT.TabIndex = 6;
             // 
             // txtSoluong
             // 
-            txtSoluong.Location = new Point(1383, 100);
-            txtSoluong.Margin = new Padding(5, 5, 5, 5);
+            txtSoluong.Location = new Point(1105, 93);
+            txtSoluong.Margin = new Padding(5);
             txtSoluong.Name = "txtSoluong";
             txtSoluong.Size = new Size(284, 32);
             txtSoluong.TabIndex = 7;
@@ -110,7 +113,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(1223, 97);
+            label3.Location = new Point(945, 97);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
             label3.Size = new Size(96, 25);
@@ -121,7 +124,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(646, 172);
+            label5.Location = new Point(308, 168);
             label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
             label5.Size = new Size(82, 25);
@@ -130,10 +133,10 @@
             // 
             // txtDongia
             // 
-            txtDongia.Location = new Point(838, 172);
-            txtDongia.Margin = new Padding(5, 5, 5, 5);
+            txtDongia.Location = new Point(406, 168);
+            txtDongia.Margin = new Padding(5);
             txtDongia.Name = "txtDongia";
-            txtDongia.Size = new Size(290, 32);
+            txtDongia.Size = new Size(180, 32);
             txtDongia.TabIndex = 9;
             // 
             // label6
@@ -151,19 +154,19 @@
             // dtgSanPham
             // 
             dtgSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgSanPham.Location = new Point(9, 242);
-            dtgSanPham.Margin = new Padding(5, 5, 5, 5);
+            dtgSanPham.Location = new Point(3, 219);
+            dtgSanPham.Margin = new Padding(5);
             dtgSanPham.Name = "dtgSanPham";
             dtgSanPham.RowTemplate.Height = 25;
-            dtgSanPham.Size = new Size(1675, 557);
+            dtgSanPham.Size = new Size(1407, 321);
             dtgSanPham.TabIndex = 11;
             dtgSanPham.CellContentClick += dtgSanPham_CellContentClick;
             // 
             // btnThemSP
             // 
             btnThemSP.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            btnThemSP.Location = new Point(19, 833);
-            btnThemSP.Margin = new Padding(5, 5, 5, 5);
+            btnThemSP.Location = new Point(15, 606);
+            btnThemSP.Margin = new Padding(5);
             btnThemSP.Name = "btnThemSP";
             btnThemSP.Size = new Size(192, 78);
             btnThemSP.TabIndex = 12;
@@ -174,8 +177,8 @@
             // btnSuaSP
             // 
             btnSuaSP.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSuaSP.Location = new Point(336, 833);
-            btnSuaSP.Margin = new Padding(5, 5, 5, 5);
+            btnSuaSP.Location = new Point(270, 606);
+            btnSuaSP.Margin = new Padding(5);
             btnSuaSP.Name = "btnSuaSP";
             btnSuaSP.Size = new Size(189, 78);
             btnSuaSP.TabIndex = 13;
@@ -186,8 +189,8 @@
             // btnXoaSP
             // 
             btnXoaSP.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            btnXoaSP.Location = new Point(726, 837);
-            btnXoaSP.Margin = new Padding(5, 5, 5, 5);
+            btnXoaSP.Location = new Point(503, 606);
+            btnXoaSP.Margin = new Padding(5);
             btnXoaSP.Name = "btnXoaSP";
             btnXoaSP.Size = new Size(190, 75);
             btnXoaSP.TabIndex = 14;
@@ -198,8 +201,8 @@
             // btnInSP
             // 
             btnInSP.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInSP.Location = new Point(1260, 163);
-            btnInSP.Margin = new Padding(5, 5, 5, 5);
+            btnInSP.Location = new Point(1001, 157);
+            btnInSP.Margin = new Padding(5);
             btnInSP.Name = "btnInSP";
             btnInSP.Size = new Size(409, 52);
             btnInSP.TabIndex = 16;
@@ -210,8 +213,8 @@
             // btnThoatSP
             // 
             btnThoatSP.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            btnThoatSP.Location = new Point(1119, 838);
-            btnThoatSP.Margin = new Padding(5, 5, 5, 5);
+            btnThoatSP.Location = new Point(969, 606);
+            btnThoatSP.Margin = new Padding(5);
             btnThoatSP.Name = "btnThoatSP";
             btnThoatSP.Size = new Size(189, 72);
             btnThoatSP.TabIndex = 17;
@@ -222,8 +225,8 @@
             // btnHuySP
             // 
             btnHuySP.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            btnHuySP.Location = new Point(1496, 837);
-            btnHuySP.Margin = new Padding(5, 5, 5, 5);
+            btnHuySP.Location = new Point(1184, 603);
+            btnHuySP.Margin = new Padding(5);
             btnHuySP.Name = "btnHuySP";
             btnHuySP.Size = new Size(189, 78);
             btnHuySP.TabIndex = 18;
@@ -233,17 +236,51 @@
             // 
             // txtMaSP
             // 
-            txtMaSP.Location = new Point(233, 97);
-            txtMaSP.Margin = new Padding(5, 5, 5, 5);
+            txtMaSP.Location = new Point(141, 92);
+            txtMaSP.Margin = new Padding(5);
             txtMaSP.Name = "txtMaSP";
             txtMaSP.Size = new Size(290, 32);
             txtMaSP.TabIndex = 4;
+            // 
+            // txtGianhap
+            // 
+            txtGianhap.Location = new Point(774, 168);
+            txtGianhap.Margin = new Padding(5);
+            txtGianhap.Name = "txtGianhap";
+            txtGianhap.Size = new Size(180, 32);
+            txtGianhap.TabIndex = 20;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(627, 168);
+            label7.Margin = new Padding(5, 0, 5, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(92, 25);
+            label7.TabIndex = 19;
+            label7.Text = "Giá nhập:";
+            // 
+            // btnTimkiem
+            // 
+            btnTimkiem.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTimkiem.Location = new Point(731, 603);
+            btnTimkiem.Margin = new Padding(5);
+            btnTimkiem.Name = "btnTimkiem";
+            btnTimkiem.Size = new Size(190, 75);
+            btnTimkiem.TabIndex = 21;
+            btnTimkiem.Text = "Tìm kiếm";
+            btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // F_Sanpham
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1703, 935);
+            ClientSize = new Size(1420, 718);
+            Controls.Add(btnTimkiem);
+            Controls.Add(txtGianhap);
+            Controls.Add(label7);
             Controls.Add(btnHuySP);
             Controls.Add(btnThoatSP);
             Controls.Add(btnInSP);
@@ -263,7 +300,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "F_Sanpham";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "F_Sanpham";
@@ -293,5 +330,8 @@
         private Button btnThoatSP;
         private Button btnHuySP;
         private TextBox txtMaSP;
+        private TextBox txtGianhap;
+        private Label label7;
+        private Button btnTimkiem;
     }
 }

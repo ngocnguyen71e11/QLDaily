@@ -31,7 +31,7 @@ namespace QLDaily
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT *  FROM v_Hoadonbanhang WHERE MaHoaDon = @MaHoaDon GROUP BY TenKhachHang, SDT, Diachi, MaHoaDon, NgayLapHoaDon, Tongtien, MaSanPham, SoLuongMua, Chietkhau, Thanhtien, TenSanPham, DVT, Dongia ", cnn))
+                using (SqlCommand cmd = new SqlCommand("SELECT *  FROM v_Hoadonbanhang WHERE MaHoaDon = @MaHoaDon GROUP BY TenKhachHang, SDT, Diachi, MaHoaDon, NgayLapHoaDon, Tongtien, MaSanPham, SoLuongMua, Chietkhau, Thanhtien, TenSanPham, DVT, Dongia  ", cnn))
                 {
                     cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))

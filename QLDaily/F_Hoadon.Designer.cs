@@ -30,6 +30,8 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            btnThemKH = new Button();
+            cbxKhachhang = new ComboBox();
             label10 = new Label();
             btnThem = new Button();
             lbBangchu = new Label();
@@ -41,7 +43,6 @@
             label3 = new Label();
             groupBox2 = new GroupBox();
             cbxTenSP = new ComboBox();
-            button1 = new Button();
             label9 = new Label();
             txtChietkhau = new TextBox();
             label8 = new Label();
@@ -57,7 +58,6 @@
             label6 = new Label();
             label4 = new Label();
             dgCTHD = new DataGridView();
-            cbxKhachhang = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgCTHD).BeginInit();
@@ -77,6 +77,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnThemKH);
             groupBox1.Controls.Add(cbxKhachhang);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(btnThem);
@@ -87,14 +88,35 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(dTPNgayban);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(22, 85);
+            groupBox1.Location = new Point(5, 85);
             groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5);
-            groupBox1.Size = new Size(569, 303);
+            groupBox1.Size = new Size(511, 303);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
+            // 
+            // btnThemKH
+            // 
+            btnThemKH.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            btnThemKH.Location = new Point(227, 220);
+            btnThemKH.Margin = new Padding(5);
+            btnThemKH.Name = "btnThemKH";
+            btnThemKH.Size = new Size(203, 38);
+            btnThemKH.TabIndex = 21;
+            btnThemKH.Text = "Thêm khách hàng";
+            btnThemKH.UseVisualStyleBackColor = true;
+            btnThemKH.Click += btnThemKH_Click;
+            // 
+            // cbxKhachhang
+            // 
+            cbxKhachhang.FormattingEnabled = true;
+            cbxKhachhang.Location = new Point(130, 120);
+            cbxKhachhang.Name = "cbxKhachhang";
+            cbxKhachhang.Size = new Size(360, 33);
+            cbxKhachhang.TabIndex = 20;
+            cbxKhachhang.TextChanged += cbxKhachhang_TextChanged;
             // 
             // label10
             // 
@@ -110,7 +132,7 @@
             // btnThem
             // 
             btnThem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            btnThem.Location = new Point(181, 207);
+            btnThem.Location = new Point(14, 220);
             btnThem.Margin = new Padding(5);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(203, 38);
@@ -189,7 +211,6 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(cbxTenSP);
-            groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(txtChietkhau);
             groupBox2.Controls.Add(label8);
@@ -204,7 +225,7 @@
             groupBox2.Controls.Add(txtSoluong);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label4);
-            groupBox2.Location = new Point(625, 85);
+            groupBox2.Location = new Point(528, 85);
             groupBox2.Margin = new Padding(5);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5);
@@ -216,25 +237,16 @@
             // cbxTenSP
             // 
             cbxTenSP.FormattingEnabled = true;
-            cbxTenSP.Location = new Point(566, 42);
+            cbxTenSP.Location = new Point(509, 39);
             cbxTenSP.Name = "cbxTenSP";
-            cbxTenSP.Size = new Size(428, 33);
+            cbxTenSP.Size = new Size(376, 33);
             cbxTenSP.TabIndex = 6;
             cbxTenSP.TextChanged += cbxTenSP_TextChanged;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(867, 119);
-            button1.Name = "button1";
-            button1.Size = new Size(127, 42);
-            button1.TabIndex = 26;
-            button1.Text = "Tìm kiếm";
-            button1.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(419, 47);
+            label9.Location = new Point(373, 47);
             label9.Margin = new Padding(5, 0, 5, 0);
             label9.Name = "label9";
             label9.Size = new Size(128, 25);
@@ -261,7 +273,7 @@
             // 
             // btnHuy
             // 
-            btnHuy.Location = new Point(671, 197);
+            btnHuy.Location = new Point(565, 197);
             btnHuy.Margin = new Padding(5);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(157, 48);
@@ -275,7 +287,7 @@
             txtMahang.Location = new Point(110, 43);
             txtMahang.Margin = new Padding(5);
             txtMahang.Name = "txtMahang";
-            txtMahang.Size = new Size(299, 32);
+            txtMahang.Size = new Size(245, 32);
             txtMahang.TabIndex = 20;
             txtMahang.TextChanged += txtMahang_TextChanged;
             // 
@@ -299,7 +311,7 @@
             // 
             // btnIn
             // 
-            btnIn.Location = new Point(437, 197);
+            btnIn.Location = new Point(385, 197);
             btnIn.Margin = new Padding(5);
             btnIn.Name = "btnIn";
             btnIn.Size = new Size(157, 48);
@@ -321,7 +333,7 @@
             // 
             // btnDong
             // 
-            btnDong.Location = new Point(889, 197);
+            btnDong.Location = new Point(745, 197);
             btnDong.Margin = new Padding(5);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(157, 48);
@@ -332,7 +344,7 @@
             // 
             // btnSuaHD
             // 
-            btnSuaHD.Location = new Point(226, 197);
+            btnSuaHD.Location = new Point(193, 197);
             btnSuaHD.Margin = new Padding(5);
             btnSuaHD.Name = "btnSuaHD";
             btnSuaHD.Size = new Size(157, 48);
@@ -372,28 +384,19 @@
             // dgCTHD
             // 
             dgCTHD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCTHD.Location = new Point(22, 398);
+            dgCTHD.Location = new Point(3, 387);
             dgCTHD.Margin = new Padding(5);
             dgCTHD.Name = "dgCTHD";
             dgCTHD.RowTemplate.Height = 25;
-            dgCTHD.Size = new Size(1659, 517);
+            dgCTHD.Size = new Size(1442, 517);
             dgCTHD.TabIndex = 5;
             dgCTHD.CellContentClick += dgCTHD_CellContentClick;
-            // 
-            // cbxKhachhang
-            // 
-            cbxKhachhang.FormattingEnabled = true;
-            cbxKhachhang.Location = new Point(130, 120);
-            cbxKhachhang.Name = "cbxKhachhang";
-            cbxKhachhang.Size = new Size(360, 33);
-            cbxKhachhang.TabIndex = 20;
-            cbxKhachhang.TextChanged += cbxKhachhang_TextChanged;
             // 
             // F_Hoadon
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1703, 935);
+            ClientSize = new Size(1452, 935);
             Controls.Add(dgCTHD);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -443,8 +446,8 @@
         private Label label8;
         private Label label9;
         private ComboBox cbxTenSP;
-        private Button button1;
         private Label label10;
         private ComboBox cbxKhachhang;
+        private Button btnThemKH;
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace QLDaily
 {
@@ -22,7 +23,7 @@ namespace QLDaily
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
             {
                 cnn.Open();
-                string sql = "SELECT * FROM v_Sanpham";
+                string sql = "SELECT * FROM tblSanpham";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     using (SqlDataReader dr = cmd.ExecuteReader())
@@ -35,6 +36,7 @@ namespace QLDaily
                         dtgSanPham.Columns[2].HeaderText = "Đơn vị tính";
                         dtgSanPham.Columns[3].HeaderText = "Số lượng";
                         dtgSanPham.Columns[4].HeaderText = "Đơn giá";
+                        dtgSanPham.Columns[5].HeaderText = "Giá nhập";
                         cnn.Close();
                     }
                 }
@@ -54,7 +56,7 @@ namespace QLDaily
                     cmd.Parameters.AddWithValue("sDonvitinh", txtDVT.Text);
                     cmd.Parameters.AddWithValue("iSoluong", txtSoluong.Text);
                     cmd.Parameters.AddWithValue("fDongia", txtDongia.Text);
-
+                    cmd.Parameters.AddWithValue("fGianhap", txtGianhap.Text);
                     if (CheckmaSP() == 1)
                     {
                         int i = cmd.ExecuteNonQuery();
@@ -100,11 +102,12 @@ namespace QLDaily
 
         private void dtgSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtMaSP.Text = dtgSanPham.CurrentRow.Cells["Mã sản phẩm"].Value.ToString();
-            txtTenSP.Text = dtgSanPham.CurrentRow.Cells["Tên sản phẩm"].Value.ToString();
-            txtDVT.Text = dtgSanPham.CurrentRow.Cells["Đơn vị tính"].Value.ToString();
-            txtSoluong.Text = dtgSanPham.CurrentRow.Cells["Số lượng"].Value.ToString();
-            txtDongia.Text = dtgSanPham.CurrentRow.Cells["Đơn giá"].Value.ToString();
+            txtMaSP.Text = dtgSanPham.CurrentRow.Cells["PK_sSanphamID"].Value.ToString();
+            txtTenSP.Text = dtgSanPham.CurrentRow.Cells["sTensanpham"].Value.ToString();
+            txtDVT.Text = dtgSanPham.CurrentRow.Cells["sDonvitinh"].Value.ToString();
+            txtSoluong.Text = dtgSanPham.CurrentRow.Cells["iSoluong"].Value.ToString();
+            txtDongia.Text = dtgSanPham.CurrentRow.Cells["fDongia"].Value.ToString();
+            txtGianhap.Text = dtgSanPham.CurrentRow.Cells["fGianhap"].Value.ToString();
             btnSuaSP.Enabled = true;
             btnXoaSP.Enabled = true;
         }
@@ -121,6 +124,7 @@ namespace QLDaily
                     cmd.Parameters.AddWithValue("sTensanpham", txtTenSP.Text);
                     cmd.Parameters.AddWithValue("sDonvitinh", txtDVT.Text);
                     cmd.Parameters.AddWithValue("iSoluong", txtSoluong.Text);
+                    cmd.Parameters.AddWithValue("fGianhap", txtGianhap.Text);
                     cmd.Parameters.AddWithValue("fDongia", txtDongia.Text);
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
@@ -186,11 +190,12 @@ namespace QLDaily
 
         private void GetSizeColumn()
         {
-            dtgSanPham.Columns[0].Width = 150;
-            dtgSanPham.Columns[1].Width = 520;
-            dtgSanPham.Columns[2].Width = 120;
-            dtgSanPham.Columns[3].Width = 120;
-            dtgSanPham.Columns[4].Width = 120;
+            dtgSanPham.Columns[0].Width = 210;
+            dtgSanPham.Columns[1].Width = 500;
+            dtgSanPham.Columns[2].Width = 200;
+            dtgSanPham.Columns[3].Width = 200;
+            dtgSanPham.Columns[4].Width = 200;
+            dtgSanPham.Columns[5].Width = 200;
         }
 
         private void F_Sanpham_Load(object sender, EventArgs e)
@@ -203,8 +208,40 @@ namespace QLDaily
         {
             F_DanhsachSP formReport = new F_DanhsachSP();
 
-            // Hiển thị form F_Report dưới dạng hộp thoại
             formReport.ShowDialog();
         }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            string searchKeyword = txtTenSP.Text.Trim();
+
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_QuanlyDaily"].ConnectionString))
+            {
+                cnn.Open();
+
+                string sql = "SELECT * FROM tblSanpham WHERE sTensanpham LIKE @Keyword";
+
+                using (SqlCommand command = new SqlCommand(sql, cnn))
+                {
+                    command.Parameters.AddWithValue("@Keyword", "%" + searchKeyword + "%");
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        dtgSanPham.DataSource = dt;
+
+                        dtgSanPham.Columns[0].HeaderText = "Mã sản phẩm";
+                        dtgSanPham.Columns[1].HeaderText = "Tên sản phẩm";
+                        dtgSanPham.Columns[2].HeaderText = "Đơn vị tính";
+                        dtgSanPham.Columns[3].HeaderText = "Số lượng";
+                        dtgSanPham.Columns[4].HeaderText = "Đơn giá";
+                        dtgSanPham.Columns[5].HeaderText = "Giá nhập";
+                    }
+                }
+            }
+        }
+
     }
 }

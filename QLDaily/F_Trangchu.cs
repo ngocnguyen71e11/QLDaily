@@ -33,5 +33,16 @@ namespace QLDaily
             F_Hoadon f_hoadon = new F_Hoadon();
             f_hoadon.Show();
         }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Khachhang f_khachang = new Khachhang();
+            f_khachang.Show();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

@@ -33,6 +33,7 @@
             quảnLýToolStripMenuItem = new ToolStripMenuItem();
             sảnPhẩmToolStripMenuItem = new ToolStripMenuItem();
             nhàCungCấpToolStripMenuItem = new ToolStripMenuItem();
+            kháchHàngToolStripMenuItem = new ToolStripMenuItem();
             thốngKêToolStripMenuItem = new ToolStripMenuItem();
             giaoDịchToolStripMenuItem = new ToolStripMenuItem();
             bánHàngToolStripMenuItem = new ToolStripMenuItem();
@@ -49,6 +50,7 @@
             menuStrip1.Size = new Size(1703, 40);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -59,7 +61,7 @@
             // 
             // quảnLýToolStripMenuItem
             // 
-            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sảnPhẩmToolStripMenuItem, nhàCungCấpToolStripMenuItem });
+            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sảnPhẩmToolStripMenuItem, nhàCungCấpToolStripMenuItem, kháchHàngToolStripMenuItem });
             quảnLýToolStripMenuItem.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             quảnLýToolStripMenuItem.Size = new Size(98, 34);
@@ -77,6 +79,13 @@
             nhàCungCấpToolStripMenuItem.Name = "nhàCungCấpToolStripMenuItem";
             nhàCungCấpToolStripMenuItem.Size = new Size(218, 34);
             nhàCungCấpToolStripMenuItem.Text = "Nhà cung cấp";
+            // 
+            // kháchHàngToolStripMenuItem
+            // 
+            kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
+            kháchHàngToolStripMenuItem.Size = new Size(218, 34);
+            kháchHàngToolStripMenuItem.Text = "Khách hàng";
+            kháchHàngToolStripMenuItem.Click += kháchHàngToolStripMenuItem_Click;
             // 
             // thốngKêToolStripMenuItem
             // 
@@ -96,7 +105,7 @@
             // bánHàngToolStripMenuItem
             // 
             bánHàngToolStripMenuItem.Name = "bánHàngToolStripMenuItem";
-            bánHàngToolStripMenuItem.Size = new Size(180, 34);
+            bánHàngToolStripMenuItem.Size = new Size(176, 34);
             bánHàngToolStripMenuItem.Text = "Bán hàng";
             bánHàngToolStripMenuItem.Click += bánHàngToolStripMenuItem_Click;
             // 
@@ -115,7 +124,7 @@
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "F_Trangchu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "F_Trangchu";
@@ -136,5 +145,6 @@
         private ToolStripMenuItem giaoDịchToolStripMenuItem;
         private ToolStripMenuItem giớiThiệuToolStripMenuItem;
         private ToolStripMenuItem bánHàngToolStripMenuItem;
+        private ToolStripMenuItem kháchHàngToolStripMenuItem;
     }
 }
