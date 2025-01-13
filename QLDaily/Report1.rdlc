@@ -11,7 +11,8 @@
               <TextRun>
                 <Value>HÓA ĐƠN BÁN HÀNG</Value>
                 <Style>
-                  <FontSize>26pt</FontSize>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>20pt</FontSize>
                   <Color>Blue</Color>
                 </Style>
               </TextRun>
@@ -21,9 +22,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.23376in</Top>
-        <Left>3.28671in</Left>
-        <Height>0.67708in</Height>
-        <Width>3.79167in</Width>
+        <Left>2.66171in</Left>
+        <Height>0.39583in</Height>
+        <Width>3.2675in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -68,12 +69,14 @@
                             <TextRun>
                               <Value>Tên sản phẩm</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox13</rd:DefaultName>
@@ -101,12 +104,14 @@
                             <TextRun>
                               <Value>Đơn vị tính</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
@@ -134,12 +139,14 @@
                             <TextRun>
                               <Value>Số lượng</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -167,12 +174,14 @@
                             <TextRun>
                               <Value>Đơn giá</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -200,12 +209,14 @@
                             <TextRun>
                               <Value>Thành tiền</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -238,12 +249,14 @@
                             <TextRun>
                               <Value>=Fields!TenSanPham.Value</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>sTensanpham</rd:DefaultName>
@@ -271,12 +284,14 @@
                             <TextRun>
                               <Value>=Fields!DVT.Value</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>DVT</rd:DefaultName>
@@ -304,12 +319,14 @@
                             <TextRun>
                               <Value>=Fields!SoLuongMua.Value</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>SoLuongMua</rd:DefaultName>
@@ -337,12 +354,14 @@
                             <TextRun>
                               <Value>=Fields!Dongia.Value</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Dongia</rd:DefaultName>
@@ -370,12 +389,14 @@
                             <TextRun>
                               <Value>=Fields!Thanhtien.Value</Value>
                               <Style>
-                                <FontFamily>Calibri</FontFamily>
+                                <FontFamily>times New Roman</FontFamily>
                                 <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Thanhtien</rd:DefaultName>
@@ -416,8 +437,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.53584in</Top>
-        <Left>1.49158in</Left>
+        <Top>2.28584in</Top>
+        <Left>0.5in</Left>
         <Height>0.6875in</Height>
         <Width>7.62213in</Width>
         <ZIndex>1</ZIndex>
@@ -436,7 +457,7 @@
               <TextRun>
                 <Value>Khách hàng</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -445,8 +466,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>1.65515in</Top>
-        <Left>2.06796in</Left>
+        <Top>1.40515in</Top>
+        <Left>1.06796in</Left>
         <Height>0.25in</Height>
         <Width>1.05208in</Width>
         <ZIndex>2</ZIndex>
@@ -469,7 +490,7 @@
               <TextRun>
                 <Value>=Fields!TenKhachHang.Value</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>Times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -478,8 +499,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>1.65515in</Top>
-        <Left>3.16171in</Left>
+        <Top>1.40515in</Top>
+        <Left>2.16171in</Left>
         <Height>0.26389in</Height>
         <Width>2.32987in</Width>
         <ZIndex>3</ZIndex>
@@ -502,7 +523,7 @@
               <TextRun>
                 <Value>SĐT:</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>Times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -511,10 +532,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>1.66904in</Top>
-        <Left>5.68949in</Left>
+        <Top>1.41904in</Top>
+        <Left>4.55556in</Left>
         <Height>0.25in</Height>
-        <Width>0.47917in</Width>
+        <Width>0.6131in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -535,7 +556,7 @@
               <TextRun>
                 <Value>=Fields!SDT.Value</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -544,8 +565,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>1.66904in</Top>
-        <Left>6.21032in</Left>
+        <Top>1.41904in</Top>
+        <Left>5.21032in</Left>
         <Height>0.25in</Height>
         <Width>1.99653in</Width>
         <ZIndex>5</ZIndex>
@@ -568,7 +589,7 @@
               <TextRun>
                 <Value>Địa chỉ:</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -577,8 +598,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>2.08792in</Top>
-        <Left>2.06796in</Left>
+        <Top>1.83792in</Top>
+        <Left>1.06796in</Left>
         <Height>0.25in</Height>
         <Width>0.67708in</Width>
         <ZIndex>6</ZIndex>
@@ -601,7 +622,7 @@
               <TextRun>
                 <Value>=Fields!Diachi.Value</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -610,8 +631,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>2.08792in</Top>
-        <Left>2.81449in</Left>
+        <Top>1.83792in</Top>
+        <Left>1.81449in</Left>
         <Height>0.25in</Height>
         <Width>5.14236in</Width>
         <ZIndex>7</ZIndex>
@@ -634,7 +655,7 @@
               <TextRun>
                 <Value>Ngày:</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -643,8 +664,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.06028in</Top>
-        <Left>3.29316in</Left>
+        <Top>0.81028in</Top>
+        <Left>2.66816in</Left>
         <Height>0.35417in</Height>
         <Width>0.54167in</Width>
         <ZIndex>8</ZIndex>
@@ -667,7 +688,7 @@
               <TextRun>
                 <Value>=Fields!NgayLapHoaDon.Value</Value>
                 <Style>
-                  <FontFamily>Calibri</FontFamily>
+                  <FontFamily>times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
@@ -676,8 +697,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>1.06028in</Top>
-        <Left>3.83483in</Left>
+        <Top>0.81028in</Top>
+        <Left>2.95983in</Left>
         <Height>0.35417in</Height>
         <Width>2.87625in</Width>
         <ZIndex>9</ZIndex>
@@ -692,13 +713,17 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>7.36334in</Height>
-    <Style />
+    <Height>3.11334in</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
   </Body>
-  <Width>10.83333in</Width>
+  <Width>10.36458in</Width>
   <Page>
     <PageHeader>
-      <Height>2.3425in</Height>
+      <Height>3.32167in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -711,8 +736,8 @@
                 <TextRun>
                   <Value>BÍCH HUY</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <FontSize>18pt</FontSize>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>14pt</FontSize>
                     <FontWeight>Normal</FontWeight>
                   </Style>
                 </TextRun>
@@ -723,8 +748,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>0.11806in</Top>
-          <Left>0.76824in</Left>
+          <Top>0.25695in</Top>
+          <Left>2.62713in</Left>
           <Height>0.33333in</Height>
           <Width>2.80208in</Width>
           <Style>
@@ -746,6 +771,7 @@
                 <TextRun>
                   <Value>Xóm 14 - Trung Môn - Yên sơn - Tuyên Quang</Value>
                   <Style>
+                    <FontFamily>times New Roman</FontFamily>
                     <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
@@ -754,8 +780,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.39458in</Top>
-          <Left>0.65365in</Left>
+          <Top>1.28347in</Top>
+          <Left>2.51254in</Left>
           <Height>0.41667in</Height>
           <Width>3.40624in</Width>
           <ZIndex>1</ZIndex>
@@ -778,8 +804,8 @@
                 <TextRun>
                   <Value>Số hóa đơn:</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <FontSize>14pt</FontSize>
+                    <FontFamily>times New Roman</FontFamily>
+                    <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -787,8 +813,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.27083in</Top>
-          <Left>6.79899in</Left>
+          <Top>2.06847in</Top>
+          <Left>2.51254in</Left>
           <Height>0.35417in</Height>
           <Width>1.05208in</Width>
           <ZIndex>2</ZIndex>
@@ -811,8 +837,8 @@
                 <TextRun>
                   <Value>=Fields!MaHoaDon.Value</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <FontSize>14pt</FontSize>
+                    <FontFamily>times New Roman</FontFamily>
+                    <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -820,8 +846,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.27083in</Top>
-          <Left>7.86496in</Left>
+          <Top>2.06847in</Top>
+          <Left>3.57851in</Left>
           <Height>0.35417in</Height>
           <Width>2.33333in</Width>
           <ZIndex>3</ZIndex>
@@ -844,29 +870,33 @@
                 <TextRun>
                   <Value>CHUYÊN BÁN BUÔN</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
+                    <FontFamily>Times New Roman</FontFamily>
                     <FontSize>18pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
             <Paragraph>
               <TextRuns>
                 <TextRun>
                   <Value>PHÂN BÓN - HÀNG TẠP HÓA - GAS</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
+                    <FontFamily>Times New Roman</FontFamily>
                     <FontSize>18pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>0.50695in</Top>
-          <Left>0.65365in</Left>
+          <Top>0.60417in</Top>
+          <Left>1.30421in</Left>
           <Height>0.73486in</Height>
           <Width>5.51501in</Width>
           <ZIndex>4</ZIndex>
@@ -884,8 +914,8 @@
           <Source>Embedded</Source>
           <Value>ID1</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.89458in</Top>
-          <Left>6.89496in</Left>
+          <Top>2.31722in</Top>
+          <Left>2.60851in</Left>
           <Height>0.93056in</Height>
           <Width>1.01042in</Width>
           <ZIndex>5</ZIndex>
@@ -899,8 +929,8 @@
           <Source>Embedded</Source>
           <Value>ID2</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>1.11903in</Top>
-          <Left>8.12325in</Left>
+          <Top>2.54167in</Top>
+          <Left>3.8368in</Left>
           <Height>0.5in</Height>
           <Width>1.95289in</Width>
           <ZIndex>6</ZIndex>
@@ -919,6 +949,7 @@
                 <TextRun>
                   <Value>SĐT: 0343 475 586 - 0387405524</Value>
                   <Style>
+                    <FontFamily>times New Roman</FontFamily>
                     <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
@@ -927,8 +958,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.81125in</Top>
-          <Left>0.65365in</Left>
+          <Top>1.70014in</Top>
+          <Left>2.51254in</Left>
           <Height>0.41667in</Height>
           <Width>3.40624in</Width>
           <ZIndex>7</ZIndex>
@@ -973,7 +1004,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.125in</Top>
-          <Left>8.30556in</Left>
+          <Left>4.55556in</Left>
           <Height>0.35417in</Height>
           <Width>0.92014in</Width>
           <Style>
@@ -1005,7 +1036,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
           <Top>0.125in</Top>
-          <Left>9.2257in</Left>
+          <Left>5.1007in</Left>
           <Height>0.35417in</Height>
           <Width>1.13888in</Width>
           <ZIndex>1</ZIndex>
